@@ -13,3 +13,8 @@ Change JNDI-DEFINITION-NAME to  your jndi name for example `someService/1.0.0/so
 
 Change JNDI-SERVER to your server for example `jnp://dev-jndi:8080`
 
+
+
+##TODO's
+* Move to properties or as command line parameters
+* Has the eclipse project and other stuff to run on eclipse IDE
