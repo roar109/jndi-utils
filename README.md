@@ -3,6 +3,7 @@ jndi-utils
 
 Test if a JNDI is available and returns it value
 
+## How?
 ###### Edit the `JNDICheck.java` file and change the properties:
 `String name = "JNDI-DEFINITION-NAME";` 
 
