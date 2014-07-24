@@ -4,6 +4,8 @@
 package org.rageco.test;
 
 
+import org.rageco.test.util.ReadProperties;
+
 import java.util.Properties;
 
 import javax.naming.Context;
@@ -32,12 +34,14 @@ public class JNDICheck
    {
       try
       {
-         final String name = "JNDI-DEFINITION-NAME";
+         final ReadProperties properties = ReadProperties.instance ();
+         final String name = properties.readJndiName ();
+
          // Create a Properties object and set properties appropriately
          final Properties props = new Properties ();
          props.put (Context.INITIAL_CONTEXT_FACTORY, "org.jnp.interfaces.NamingContextFactory");
          props.put (Context.URL_PKG_PREFIXES, "org.jboss.naming:org.jnp.interfaces");
-         props.put (Context.PROVIDER_URL, "JNDI-SERVER");
+         props.put (Context.PROVIDER_URL, properties.readServer ());
 
          // Create the initial context from the properties we just created
          final Context initialContext = new InitialContext (props);
@@ -50,13 +54,19 @@ public class JNDICheck
          }
          else
          {
-            System.out.println (name + " is bound to: \n" + obj);
+            System.out.println ("JNDI Name:\t" + name);
+            System.out.println ("Value:\t\t" + obj);
          }
       }
       catch (final NamingException nnfe)
       {
-         System.out.println ("Encountered a naming exception");
+         System.err.println (nnfe.getMessage ());
          nnfe.printStackTrace ();
+      }
+      catch (final Exception e)
+      {
+         System.err.println (e.getMessage ());
+         e.printStackTrace ();
       }
    }
 }
