@@ -1,9 +1,7 @@
-/*
- * Copyright 2000 - 2008 24 Hour Fitness. All rights reserved.
- */
 package org.rageco.test.util;
 
 
+import java.io.FileInputStream;
 import java.io.IOException;
 
 import java.util.Properties;
@@ -20,12 +18,13 @@ import java.util.Properties;
 public class ReadProperties
 {
    private static ReadProperties instance;
-   private Properties            props = null;
+   private Properties            props    = null;
+   private final String          fileName = "\\properties.properties";
 
 
    private ReadProperties ()
    {
-      // Nothing here
+      // nothing to do here
    }
 
 
@@ -53,8 +52,19 @@ public class ReadProperties
    {
       if (props == null)
       {
+         final String enviroment = System.getProperty ("enviroment");
          props = new Properties ();
-         props.load (this.getClass ().getResourceAsStream ("/properties.properties"));
+
+         if ( !"eclipse".equals (enviroment))
+         {
+            props.load (this.getClass ().getResourceAsStream (fileName));
+         }
+         else
+         {
+            final String basePath = System.getProperty ("currentPath");
+            props.load (new FileInputStream (basePath + fileName));
+         }
+
       }
    }
 

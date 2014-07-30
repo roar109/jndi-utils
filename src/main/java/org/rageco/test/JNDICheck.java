@@ -1,10 +1,8 @@
-/*
- * Copyright 2000 - 2008 24 Hour Fitness. All rights reserved.
- */
 package org.rageco.test;
 
 
 import org.rageco.test.util.ReadProperties;
+import org.rageco.test.util.ValidateProperties;
 
 import java.util.Properties;
 
@@ -35,26 +33,30 @@ public class JNDICheck
       try
       {
          final ReadProperties properties = ReadProperties.instance ();
-         final String name = properties.readJndiName ();
+         final String jndi = properties.readJndiName ();
+         final String server = properties.readServer ();
+
+         // Simple validations
+         ValidateProperties.validateServerAndJndi (server, jndi);
 
          // Create a Properties object and set properties appropriately
          final Properties props = new Properties ();
          props.put (Context.INITIAL_CONTEXT_FACTORY, properties.readInitialContext ());
          props.put (Context.URL_PKG_PREFIXES, properties.readPkgPrefix ());
-         props.put (Context.PROVIDER_URL, properties.readServer ());
+         props.put (Context.PROVIDER_URL, server);
 
          // Create the initial context from the properties we just created
          final Context initialContext = new InitialContext (props);
 
          // Look up the object
-         final Object obj = initialContext.lookup (name);
-         if (name.equals (""))
+         final Object obj = initialContext.lookup (jndi);
+         if (jndi.equals (""))
          {
             System.out.println ("Looked up the initial context");
          }
          else
          {
-            System.out.println ("JNDI Name:\t" + name);
+            System.out.println ("JNDI Name:\t" + jndi);
             System.out.println ("Value:\t\t" + obj);
          }
       }
