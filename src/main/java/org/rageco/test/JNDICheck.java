@@ -39,8 +39,8 @@ public class JNDICheck
 
          // Create a Properties object and set properties appropriately
          final Properties props = new Properties ();
-         props.put (Context.INITIAL_CONTEXT_FACTORY, "org.jnp.interfaces.NamingContextFactory");
-         props.put (Context.URL_PKG_PREFIXES, "org.jboss.naming:org.jnp.interfaces");
+         props.put (Context.INITIAL_CONTEXT_FACTORY, properties.readInitialContext ());
+         props.put (Context.URL_PKG_PREFIXES, properties.readPkgPrefix ());
          props.put (Context.PROVIDER_URL, properties.readServer ());
 
          // Create the initial context from the properties we just created

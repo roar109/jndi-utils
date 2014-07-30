@@ -87,4 +87,34 @@ public class ReadProperties
       checkConfigure ();
       return String.valueOf (props.get ("jndi"));
    }
+
+
+   /**
+    * Represents readInitialContext
+    * 
+    * @return string
+    * @throws IOException
+    * @since Jul 29, 2014
+    * 
+    */
+   public String readInitialContext () throws IOException
+   {
+      checkConfigure ();
+      return String.valueOf (props.get ("initial.context.factory"));
+   }
+
+
+   /**
+    * Represents readPkgPrefix
+    * 
+    * @return string
+    * @throws IOException
+    * @since Jul 29, 2014
+    * 
+    */
+   public String readPkgPrefix () throws IOException
+   {
+      checkConfigure ();
+      return String.valueOf (props.get ("url.pkg.prefixes"));
+   }
 }
