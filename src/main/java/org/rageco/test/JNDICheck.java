@@ -49,21 +49,47 @@ public class JNDICheck
          final Context initialContext = new InitialContext (props);
 
          // Look up the object
-         final Object obj = initialContext.lookup (jndi);
-         if (jndi.equals (""))
+         final String[] definitions = ValidateProperties.splitJndis (jndi);
+         for (final String jndiDefinition : definitions)
          {
-            System.out.println ("Looked up the initial context");
-         }
-         else
-         {
-            System.out.println ("JNDI Name:\t" + jndi);
-            System.out.println ("Value:\t\t" + obj);
+            searchAndPrintJndi (initialContext, jndiDefinition);
          }
       }
       catch (final NamingException nnfe)
       {
          System.err.println (nnfe.getMessage ());
          nnfe.printStackTrace ();
+      }
+      catch (final Exception e)
+      {
+         System.err.println (e.getMessage ());
+         e.printStackTrace ();
+      }
+   }
+
+
+   /**
+    * Do the look up of the jndi definition and print its value
+    * */
+   private static void searchAndPrintJndi (final Context initialContext, final String jndi)
+   {
+      Object obj;
+      try
+      {
+         obj = initialContext.lookup (jndi);
+         if (obj != null)
+         {
+            System.out.println ("JNDI Name:\t" + jndi);
+            System.out.println ("Value:\t\t" + obj + "\n");
+         }
+         else
+         {
+            System.out.println ("Null Value");
+         }
+      }
+      catch (final javax.naming.NameNotFoundException nnf)
+      {
+         System.err.println ("JNDI definition '" + jndi + "' not found.\n");
       }
       catch (final Exception e)
       {

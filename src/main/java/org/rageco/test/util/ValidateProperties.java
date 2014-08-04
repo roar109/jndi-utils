@@ -31,4 +31,18 @@ public final class ValidateProperties
          throw new IllegalArgumentException ("JNDI and Server properties must be a valid strings");
       }
    }
+
+
+   /**
+    * Represents splitJndis
+    * 
+    * @param jndiProperty
+    * @return String[]
+    * @since Aug 4, 2014
+    * 
+    */
+   public static String[] splitJndis (final String jndiProperty)
+   {
+      return StringUtils.split (jndiProperty, ",");
+   }
 }

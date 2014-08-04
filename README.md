@@ -16,3 +16,4 @@ You can use the jndi-utils.launch file on eclipse to run the main class.
 * ~~Move to properties or as command line parameters~~
 * Has the eclipse project and other stuff to run on eclipse IDE
 * ~~Add launch file~~
+* ~~Multiple JNDI definitions at once~~
