@@ -10,7 +10,7 @@ import java.util.Properties;
 /**
  * ReadProperties represents a class that load the properties :)
  * 
- * @author <a href="mailto:roar109@gmail.com">Hector Mendoza</a>
+ * @author Hector Mendoza
  * @version $Id$
  * @since Jul 23, 2014
  * 
@@ -19,7 +19,7 @@ public class ReadProperties
 {
    private static ReadProperties instance;
    private Properties            props    = null;
-   private final String          fileName = "\\properties.properties";
+   private final String          fileName = "properties.properties";
 
 
    private ReadProperties ()
@@ -52,19 +52,8 @@ public class ReadProperties
    {
       if (props == null)
       {
-         final String enviroment = System.getProperty ("enviroment");
          props = new Properties ();
-
-         if ( !"eclipse".equals (enviroment))
-         {
-            props.load (this.getClass ().getResourceAsStream (fileName));
-         }
-         else
-         {
-            final String basePath = System.getProperty ("currentPath");
-            props.load (new FileInputStream (basePath + fileName));
-         }
-
+         props.load (new FileInputStream (fileName));
       }
    }
 

@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
  * ValidateProperties represents some simple tests
  * 
- * @author <a href="mailto:roar109@gmail.com">Hector Mendoza</a>
+ * @author Hector Mendoza
  * @version $Id$
  * @since Jul 30, 2014
  * 

@@ -1,6 +1,3 @@
-/*
- * Copyright 2000 - 2008 24 Hour Fitness. All rights reserved.
- */
 package org.rage.counter;
 
 
@@ -12,7 +9,7 @@ import java.io.IOException;
 /**
  * ReadClassExecutions represents ...
  * 
- * @author <a href="mailto:hmendoza@24hourfit.com">Hector Mendoza</a>
+ * @author Hector Mendoza
  * @version $Id$
  * @since Sep 12, 2014
  * 

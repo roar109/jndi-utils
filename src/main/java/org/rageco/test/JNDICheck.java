@@ -1,6 +1,5 @@
 package org.rageco.test;
 
-
 import org.rageco.test.util.ReadProperties;
 import org.rageco.test.util.ValidateProperties;
 
@@ -14,8 +13,7 @@ import javax.naming.NamingException;
 /**
  * JNDICheck
  * 
- * @author <a href="mailto:roar109@gmail.com">Hector Mendoza</a>
- * @version $Id$
+ * @author Hector Mendoza
  * @since Jul 23, 2014
  * 
  */
