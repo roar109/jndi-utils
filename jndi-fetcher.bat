@@ -1,0 +1,1 @@
+java -jar target\jndi-utils-jar-with-dependencies.jar

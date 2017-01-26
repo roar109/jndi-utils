@@ -1,4 +1,4 @@
-package org.rageco.test.util;
+package com.github.roar109.jndi.utils;
 
 
 import org.apache.commons.lang3.StringUtils;

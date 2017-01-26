@@ -1,4 +1,4 @@
-package org.rageco.test.util;
+package com.github.roar109.jndi.utils;
 
 
 import java.io.FileInputStream;
